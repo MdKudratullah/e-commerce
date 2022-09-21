@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="login_form.css" />
+    <link rel="stylesheet" href="register_form.css" />
+    <link rel="stylesheet" href="verify-otp.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -26,54 +27,34 @@
       <!--Container End-->
       <!--Amazon Image Logo-->
     </header>
-    <!--Form-->
     <div class="d-flex flex-row justify-content-center">
       <div class="row">
         <div class="col-md">
-          <form>
-            <div class="login-in">Login</div>
+          <form id="formElem" action="" method="post">
+            <div class="reg">Verify OTP</div>
             <div class="form-group">
-              <label id="mobileOrEmail" for="mobileOrEmail">Email or phone number</label>
-              <input type="text" class="form-control" id="mobileOrEmail" placeholder="Enter email or phone number" name="mobileOrEmail" />
+              <label id="firstName" for="firstName">OTP</label>
+              <input type="text" class="form-control" id="otp" name="otp" />
+              <div id="invalid-otp" class="invalid-otp hide"></div>
             </div>
             <div class="form-group">
-              <label id="password" for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" name="password" />
-              &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-              &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Forgot password?
-              <div id="invalid-otp" class="invalid-otp hide">invalid Credential</div>
-              <div class="form-group">
-                <input type="submit" class="btn btn-warning" id="login" value="Login" />
-              </div>
+              <input type="submit" class="btn btn-warning" id="sign-in" value="Verify" />
             </div>
-            <a href="register_form.html">
-              <button type="button" class="btn btn-warning" id="grey-button">Create your new account</button></a
-            >
           </form>
         </div>
-        <!--Col 1 End-->
       </div>
-      <!--Row 1 End-->
     </div>
-    <!--Container End-->
     <script>
       const form = document.querySelector('form')
       form.onsubmit = (e) => {
         e.preventDefault()
         var formData = new FormData(form)
-        console.log('formData=', ...formData)
-        const loginObject = {}
-        formData.forEach((value, key) => (loginObject[key] = value))
-        if (loginObject.mobileOrEmail.includes('@')) {
-          loginObject.email = loginObject.mobileOrEmail
-        } else {
-          loginObject.mobile = loginObject.mobileOrEmail
-        }
-        delete loginObject.mobileOrEmail
-        console.log('login formData=', loginObject)
-        loginApi(loginObject)
+        const otpObject = {}
+        formData.forEach((value, key) => (otpObject[key] = value))
+        console.log('otpObject=', otpObject)
+        signupApi(otpObject)
       }
-      function loginApi(loginObject) {
+      function signupApi(otpObject) {
         var xhttp = new XMLHttpRequest()
         xhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
@@ -84,15 +65,17 @@
               const isMatched = responseText.match(regex)
               const invalidOtpDiv = document.getElementById('invalid-otp')
               if (isMatched != null && isMatched != undefined && isMatched !== '') {
-                console.log('Got Access Token')
+                console.log('Verified')
                 invalidOtpDiv.classList.add('hide')
                 invalidOtpDiv.classList.remove('show')
                 localStorage.setItem('accessToken', xhttp.responseText)
                 window.location.href = 'index.html'
               } else {
-                console.log('Invalid Credential')
+                console.log('OTP not valid')
+                invalidOtpDiv.textContent = 'OTP not valid'
+                invalidOtpDiv.classList.remove('hide')
+                invalidOtpDiv.classList.add('show')
               }
-              window.location.href = 'index.html'
             }
           } else if (this.readyState == 4 && this.status !== 200) {
             console.log('errrrrr=', xhttp.status)
@@ -104,9 +87,21 @@
             invalidOtpDiv.textContent = xhttp.status + ': ' + xhttp.responseText
           }
         }
-        xhttp.open('POST', 'http://localhost:9999/login')
+        xhttp.onerror = function (error) {
+          console.log('error3=', error)
+        }
+        xhttp.open('POST', 'http://localhost:9999/verify-otp')
         xhttp.setRequestHeader('Content-type', 'application/json')
-        xhttp.send(JSON.stringify(loginObject))
+        otpObject['mobile'] = localStorage.getItem('mobile')
+        otpObject['email'] = localStorage.getItem('email')
+        otpObject['otpId'] = localStorage.getItem('otpId')
+        otpObject['customerId'] = localStorage.getItem('customerId')
+        console.log('otpObject2=', otpObject)
+        try {
+          xhttp.send(JSON.stringify(otpObject))
+        } catch (error) {
+          console.log('error=', error)
+        }
       }
     </script>
   </body>

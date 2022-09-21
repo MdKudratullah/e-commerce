@@ -1,0 +1,12 @@
+.invalid-otp {
+  background: #dc3545;
+  color: white;
+  text-align: center;
+  margin: 1rem 0;
+}
+.hide {
+  visibility: hidden;
+}
+.show {
+  visibility: visible;
+}

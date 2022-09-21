@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href="register_form.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="register_form.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <header>
-<!--Amazon Image Logo-->
+      <!--Amazon Image Logo-->
       <div class="d-flex flex-row justify-content-center">
         <div class="row">
           <div class="col-md">
-            <img class="img_1" src="" alt=""/>
-          </div><!--Col 1 End-->
-        </div><!--Row 1 End-->
-      </div><!--Container End-->
-<!--Amazon Image Logo-->
-   </header>
-
-
-<!--Form-->
-      <div class="d-flex flex-row justify-content-center">
-        <div class="row">
-          <div class="col-md">
-           <form>
-             <div class="reg">Create Account</div>
-  <div class="form-group">
-    <label id="words_1" for="exampleInputName1">Your name</label>
-    <input type="email" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="First and last name">
-    <label id="words_1" for="exampleInputMobile1">Mobile number</label>
-    <input type="email" class="form-control" id="exampleInputMobile1" aria-describedby="mobileHelp" placeholder="Mobile number">
-    <label id="words_1" for="exampleInputEmail1">Email(optional)</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <label id="words_2" for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-
-      <button type="button" class="btn btn-warning" id="sign-in">Continue</button>
+            <img class="img_1" src="" alt="" />
+          </div>
+          <!--Col 1 End-->
+        </div>
+        <!--Row 1 End-->
+      </div>
+      <!--Container End-->
+      <!--Amazon Image Logo-->
+    </header>
+    <div class="d-flex flex-row justify-content-center">
+      <div class="row">
+        <div class="col-md">
+          <form id="formElem" method="post">
+            <div class="reg">Create Account</div>
+            <div class="form-group">
+              <label id="firstName" for="firstName">First Name</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" />
+              <label id="lastName" for="lastName">Last Name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" />
+              <label id="mobile" for="mobile">Mobile</label>
+              <input type="text" class="form-control" id="mobile" name="mobile" />
+              <label id="email" for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" />
+              <label id="password" for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-warning" id="sign-in" value="SignUp" />
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-
-</form>
-          </div><!--Col 1 End-->
-        </div><!--Row 1 End-->
-      </div><!--Container End-->
-
-
-
+    <script>
+      const form = document.querySelector('form')
+      form.onsubmit = (e) => {
+        e.preventDefault()
+        var formData = new FormData(form)
+        const signupObject = {}
+        formData.forEach((value, key) => (signupObject[key] = value))
+        console.log('formData=', signupObject)
+        signupApi(signupObject)
+      }
+      function signupApi(signupObject) {
+        var xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            const responseText = xhttp.responseText
+            console.log('responseText=', responseText)
+            if (responseText != null && responseText !== '') {
+              var regex = /(^[\w-]*\.[\w-]*\.[\w-]*$)/
+              const isMatched = responseText.match(regex)
+              if (isMatched != null && isMatched != undefined && isMatched !== '') {
+                console.log('Already Verified')
+                localStorage.setItem('accessToken', xhttp.responseText)
+                window.location.href = 'index.html'
+              } else {
+                const responseObject = JSON.parse(responseText)
+                console.log('responseObject=', responseObject)
+                localStorage.setItem('firstName', signupObject.firstName)
+                localStorage.setItem('customerId', responseObject.customerId)
+                localStorage.setItem('otpId', responseObject.otpId)
+                localStorage.setItem('mobile', signupObject.mobile)
+                localStorage.setItem('email', signupObject.email)
+              }
+              window.location.href = 'verify-otp.html'
+            }
+          }
+        }
+        xhttp.open('POST', 'http://localhost:9999/signup')
+        xhttp.setRequestHeader('Content-type', 'application/json')
+        xhttp.send(JSON.stringify(signupObject))
+      }
+    </script>
   </body>
 </html>
