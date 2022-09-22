@@ -1,0 +1,57 @@
+.add{
+  background-color: blue;
+
+  font-size: 30px;
+  font-weight:500;
+  margin-left: 0px;
+  color:white;
+}
+.name{
+
+}
+.phone{
+
+}
+.text1{
+  font-size: 15px;
+  font-family: Sans-serif;
+
+}
+.btn1{
+    border-radius: 20px;
+    border-color: gray;
+    cursor: pointer;
+}
+.btn1:hover{
+  background-color:#87CEFA;
+}
+.btn2{
+  border-radius: 20px;
+  border-color: gray;
+}
+.btn2:hover{
+  background-color:#87CEFA;
+
+}
+.btn3{
+  display: flex;
+  margin:20px 0px;
+  }
+.btn3 button{
+  font-size: 25px;
+  width: 1520px;
+  padding: 8px 25px;
+  border:none:
+  outline:none;
+  border: 0px;
+  cursor: pointer;
+
+}
+.save{
+  background-color: #FF4500;
+  color:white;
+  margin-right: 10px;
+}
+.save:hover{
+background-color: #FFD700;
+}

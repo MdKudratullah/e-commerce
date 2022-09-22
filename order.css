@@ -1,0 +1,32 @@
+.paym{
+  background-color: blue;
+  color:white;
+  font-size: 25px;
+}
+.box1{
+  border:1px solid gray;
+  font-size: 25px;
+
+}
+.box2{
+  border:1px solid gray;
+  font-size: 25px;
+}
+.box3{
+  border:1px solid gray;
+  font-size: 25px;
+}
+.box5{
+  border:1px solid gray;
+  font-size: 25px;
+}
+.btn{
+  background-color: #FF4500;
+  color:white;
+  border:none;
+  font-size: 25px;
+  width:1500px;
+}
+.btn:hover{
+  background-color: #FFA500;
+}

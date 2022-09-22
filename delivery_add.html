@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="delivery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <h2 class="add">Delivery Details</h2>
+    <fieldset>
+      <legend>Full Name</legend>
+      <input type="text" name="frame" value="" size="50" class="name" required>
+    </fieldset>
+    <fieldset>
+    <legend>Phone Number</legend>
+      <input type="text" name="" value="" size="10" class="phone" required>
+        <input type="text" name="" value="" class="phone" size="10" required>
+    </fieldset>
+    <fieldset>
+    <legend>Pin Code</legend>
+    <input type="text" name="" value="" size="10" class="pin">
+    </fieldset>
+
+      <div class="container">
+
+
+      <div class="f-group">
+    <fieldset>
+      <legend>State</legend>
+    <select class="select1" name="" id="select1" onchange="populate(this.id,'select2')">
+            <option>Arunachal pardesh</option>
+            <option>Assam</option>
+            <option value="bihar">Bihar</option>
+            <option>Chattisgarh</option>
+            <option>Goa</option>
+            <option>Gujrat</option>
+            <option>Haryana</option>
+            <option>Himachal pradesh</option>
+            <option>Jammu&kashmir</option>
+            <option value="jhar">Jharkhand</option>
+            <option>Karnataka</option>
+            <option>Kerla</option>
+            <option>Madhya Pradesh</option>
+            <option>Manipur</option>
+            <option>Meghalaya</option>
+            <option>Mizoram</option>
+            <option>Nagaland</option>
+            <option>Odisha</option>
+            <option>Punjab</option>
+            <option>Rajasthan</option>
+            <option>Sikkim</option>
+            <option>Tamil Nadu</option>
+            <option>Telagana</option>
+            <option>Tripura</option>
+            <option>Uttar Pradesh</option>
+
+
+      </select>
+
+    </fieldset>
+      </div>
+      <div class="f-group">
+        <fieldset>
+          <legend>City</legend>
+          <select class="select2" name="" id="select2">
+  </select>
+        </fieldset>  </div>
+  </div>
+  <script>
+    function populate(s1,s2)
+    {
+      var s1 = document.getElementById(s1);
+      var s2 = document.getElementById(s2);
+      s2.innerHTML = "";
+      if(s1.value == "jhar")
+      {
+        var optionArray=['hazaribagh|Hazaribagh','chatra|Chatra','ranchi|Ranchi'];
+      }
+      else if(s1.value == 'bihar')
+      {
+         var optionArray=['baliya|Baliya','begusaray|Begusaray','patna|Patna']
+      }
+      for(var option in optionArray)
+      {
+        var pair = optionArray[option].split("|");
+        var newoption =document.createElement("option");
+        newoption.value= pair[0];
+        newoption.innerHTML=pair[1];
+        s2.options.add(newoption);
+      }
+    }
+</script>
+<fieldset>
+  <legend>House No.,Building Name</legend>
+  <input type="text" name="" value="" class="housen0" size="50" required>
+</fieldset>
+<fieldset>
+  <legend>Road Name,Area,Colony</legend>
+  <input type="text" name="" value="" class="roadname" size="50" required>
+</fieldset>
+<fieldset>
+  <legend>Add Near by Famous Shop/Mall/Landmark</legend>
+  <input type="text" name="" value="" class="naer" size="100" required>
+
+</fieldset>
+<div class="">
+  <h3 class="text1">Types of address</h3>
+<button type="button" name="button" class="btn1"> <i class="fa-solid fa-house">    Home</i></button>
+<button type="button" name="button" class="btn2"><i class="fa-solid fa-building">  Work</i></button>
+</div>
+<div class="btn3">
+<a href="order.html"><button type="button" name="Save details" class="save">Save Details</button></a>
+
+
+</div>
+
+
+
+  </body>
+</html>

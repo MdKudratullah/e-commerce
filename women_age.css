@@ -1,0 +1,64 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+body{
+  font-family:'poppins',sans-serif;
+  align-item:center;
+  justify_content:center;
+  display:flex;
+
+}
+.cover{
+  width:0px;
+  height:50px;
+  margin-left:10px;
+  display:flex;
+}
+
+
+.box{
+  width:500px;
+  height: 350px;
+  border:1px solid gray;
+}
+.img{
+  width: 300px;
+  height: 300px;
+}
+.box2{
+  width:300px;
+    height: 350px;
+  border:1px solid gray;
+}
+.img1{
+  width:300px;
+  height: 300px;
+}
+.box3{
+  width:300px;
+    height: 350px;
+  border:1px solid gray;
+}
+.img2{
+  width:300px;
+  height: 300px;
+}
+.box4{
+  width:300px;
+    height: 350px;
+  border:1px solid gray;
+}
+.img3{
+  width:300px;
+  height: 300px;
+}
+.box5{
+  width:300px;
+    height: 350px;
+  border:1px solid gray;
+}
+.img4{
+  width:300px;
+  height: 300px;
+}
