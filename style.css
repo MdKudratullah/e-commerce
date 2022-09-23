@@ -166,78 +166,129 @@
 
 .box1{
   width: 1500px;
+    height: 420px;
   border: 3px solid green;
-  padding: 150px;
   margin: 10px 2px;
 
 }
+.img1{
+  width:1493px;
+  height: 395px;
+}
 .box2{
   width: 1500px;
+    height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 2px;
 
 }
+.img2{
+  width:1493px;
+  height: 393px;
+}
+
 .box3{
   width: 1500px;
+    height: 400px;
   border: 3px solid green;
-  padding: 150px;
-  margin: 20px 2px;
-
+  margin: 20px 0px;
 }
+.img3{
+  width:1493px;
+  height: 393px;
+}
+
+
 .box4{
   width: 1500px;
+    height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 2px;
 
 }
+.img4{
+  width:1493px;
+  height: 393px;
+}
+
+
+
 .box5{
   width: 1500px;
+  height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px  2px;
+
+}
+.img5{
+  width:1493px;
+  height: 393px;
+
 
 }
 .box6{
   width: 1500px;
+  height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 0px;
 
+}
+.img6{
+  width:1493px;
+  height: 393px;
 }
 .box7{
   width: 1500px;
+    height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 0px;
 
 }
+.img7{
+  width:1493px;
+  height: 393px;
+}
 .box8{
   width: 1500px;
+    height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 2px;
 
+}
+.img8{
+  width:1493px;
+  height: 393px;
 }
 .box9{
   width: 1500px;
+  height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 2px;
 
+}
+.img9{
+  width:1493px;
+  height: 393px;
 }
 .box10{
   width: 1500px;
+  height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 2px;
 
 }
+.img10{
+  width:1493px;
+  height: 393px;
+}
 .box11{
   width: 1500px;
+    height: 400px;
   border: 3px solid green;
-  padding: 150px;
   margin: 20px 2px;
 
+}
+.img11{
+  width:1493px;
+  height: 393px;
 }
