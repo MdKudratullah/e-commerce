@@ -62,6 +62,9 @@ ul.product_list {
   padding: 10px;
   position: relative;
 }
+.add{
+    margin: 40px;
+}
 
 .product_image {
   position: relative;
