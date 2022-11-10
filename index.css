@@ -4,18 +4,23 @@
 .hide {
   visibility: hidden;
 }
+.logo{
+  margin-left: 5px;
+  margin-top: 5px;
+}
 .logout-button {
   padding: 0.5rem 1rem;
   background: orange;
   color: white;
   font-size: 1.1rem;
   cursor: pointer;
+
 }
 .logout-button:hover {
   background: #da9412;
 }
 .login-button {
-  padding: 0.6rem 1.1rem;
+  padding: 0.6rem 1.9rem;
   background: green;
   color: white;
   text-decoration: none;
@@ -23,6 +28,11 @@
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   border: 1px solid black;
+  margin-right: 0px;
+  margin-left: 1350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 .login-button:hover {
   background: #04bb04;
